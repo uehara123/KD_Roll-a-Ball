@@ -31,6 +31,6 @@ public class PlayerController : MonoBehaviour
 
         vector *= Time.deltaTime;
 
-        rb.AddForce(vector * speed );
+        rb.AddForce(vector * speed);
     }
 }

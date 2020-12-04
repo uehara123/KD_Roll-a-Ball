@@ -1,27 +1,36 @@
-﻿// Unity 3D/2Dゲーム開発実践入門 Unity 2019対応版 から引用
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // 重力加速度
-    const float Gravity = 9.81f;
-
-    // 重力適応具合
-    public float gravityScale = 1.0f;
-
-    // Update is called once per frame
-    void Update()
+    public float speed = 1.0f;
+    private Rigidbody rb;
+    void Start()
     {
-        Vector3 vector = new Vector3();
+        rb = GetComponent<Rigidbody>();
+    }
 
-        // キーの入力を検知しベクトルを設定
-        vector.x = Input.GetAxis("Horizontal");
-        vector.z = Input.GetAxis("Vertical");
+    void FixedUpdate()
+    {
+        Vector3 vector = Vector3.zero;
 
-        // シーンの重力を入力ベクトルの方向に合わせて変化させる
-        Physics.gravity = Gravity * vector.normalized * gravityScale;
+        if (Application.isMobilePlatform)
+        {
+            vector.x = Input.acceleration.x;
+            vector.z = Input.acceleration.y;
+        }
+        else
+        {
+            vector.x = Input.GetAxis("Horizontal");
+            vector.z = Input.GetAxis("Vertical");
+        }
+
+        if (vector.sqrMagnitude > 1)
+            vector.Normalize();
+
+        vector *= Time.deltaTime;
+
+        rb.AddForce(vector * speed);
     }
 }

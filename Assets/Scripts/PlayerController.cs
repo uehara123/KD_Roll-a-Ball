@@ -6,22 +6,34 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // 重力加速度
-    const float Gravity = 9.81f;
+    float x;
+    float z;
+    float speed = 10.0f;
+    public Rigidbody rb;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
-    // 重力適応具合
-    public float gravityScale = 1.0f;
-
-    // Update is called once per frame
     void Update()
     {
-        Vector3 vector = new Vector3();
+        if (Application.isMobilePlatform)
+        {
+            // ターゲット端末の縦横の表示に合わせてremapする
+            x = Input.acceleration.x;
+            z = Input.acceleration.y;
+        }
+        else
+        {
+            x = Input.GetAxis("Horizontal");
+            z = Input.GetAxis("Vertical");
+        }
+    }
+    void FixedUpdate()
+    {
+        // clamp acceleration vector to the unit sphere
 
-        // キーの入力を検知しベクトルを設定
-        vector.x = Input.GetAxis("Horizontal");
-        vector.z = Input.GetAxis("Vertical");
-
-        // シーンの重力を入力ベクトルの方向に合わせて変化させる
-        Physics.gravity = Gravity * vector.normalized * gravityScale;
+        // Move object
+        rb.AddForce(new Vector3(x, 0, z) * speed);
     }
 }

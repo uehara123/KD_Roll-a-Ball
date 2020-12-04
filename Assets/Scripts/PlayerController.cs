@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    float x;
-    float z;
+    /* float x;
+    float z;*/
     float speed = 10.0f;
     public Rigidbody rb;
     void Start()
@@ -17,23 +17,19 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Vector3 vector = Vector3.zero;
+
         if (Application.isMobilePlatform)
         {
             // ターゲット端末の縦横の表示に合わせてremapする
-            x = Input.acceleration.x;
-            z = Input.acceleration.y;
+            vector.x = Input.acceleration.x;
+            vector.z = Input.acceleration.y;
         }
         else
         {
-            x = Input.GetAxis("Horizontal");
-            z = Input.GetAxis("Vertical");
+            vector.x = Input.GetAxis("Horizontal");
+            vector.z = Input.GetAxis("Vertical");
         }
-    }
-    void FixedUpdate()
-    {
-        // clamp acceleration vector to the unit sphere
-
-        // Move object
-        rb.AddForce(new Vector3(x, 0, z) * speed);
+        rb.AddForce(vector * speed );
     }
 }

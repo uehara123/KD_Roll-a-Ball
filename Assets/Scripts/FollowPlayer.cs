@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Transform target;
+    private Vector3 offset;
+
+    private void Start()
     {
-        
+        offset = GetComponent<Transform>().position - target.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        GetComponent<Transform>().position = target.position + offset;
     }
 }

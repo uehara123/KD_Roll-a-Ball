@@ -29,8 +29,7 @@ public class PlayerController : MonoBehaviour
         if (vector.sqrMagnitude > 1)
             vector.Normalize();
 
-        vector *= Time.deltaTime;
-
-        rb.AddForce(vector * speed);
+        // ForceMode.Force = Time.deltaTime / Mass
+        rb.AddForce(vector * speed, ForceMode.Force);
     }
 }

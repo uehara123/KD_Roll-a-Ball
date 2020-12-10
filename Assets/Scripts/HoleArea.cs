@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HoleArea : MonoBehaviour
 {
@@ -16,7 +14,7 @@ public class HoleArea : MonoBehaviour
         if (other.gameObject.tag == targetTag)
         {
             r.velocity *= 0.9f;
-            r.AddForce(direction * -3.0f, ForceMode.Acceleration);
+            r.AddForce(direction * -8.0f, ForceMode.Acceleration);
         }
         else
         {

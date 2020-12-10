@@ -6,6 +6,8 @@ public class Hole : MonoBehaviour
 {
     bool isHolding, destroyedPlayer = false;
     int counter;
+    public FallArea fallArea;
+
 
 
     public bool IsHolding()
@@ -17,22 +19,25 @@ public class Hole : MonoBehaviour
         return destroyedPlayer;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (fallArea.FallPlayer())
         {
-            isHolding = true;
-            destroyedPlayer = true;
+            if (other.gameObject.CompareTag("Player"))
+            {
+                isHolding = true;
+                destroyedPlayer = true;
 
-            Destroy(other);
-            StartCoroutine(ResetPosition());
+                Destroy(other);
+                StartCoroutine(ResetPosition());
+            }
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            isHolding = true;
+            isHolding = false;
         }
     }
 

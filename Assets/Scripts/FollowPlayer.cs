@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     public Transform target;
@@ -12,13 +13,13 @@ public class FollowPlayer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        GetComponent<Transform>().position = target.position + offset;
+            GetComponent<Transform>().position = target.position + offset;
 
-        if (hole.DestroyedPlayer())
-        {
-            enabled = false;
-        }
+            if (hole.DestroyedPlayer())
+            {
+                enabled = false;
+            }
     }
 }

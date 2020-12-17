@@ -7,6 +7,7 @@ public class Hole : MonoBehaviour
     bool isHolding, destroyedPlayer;
     int counter;
     public FallArea fallArea;
+    public GameOverDetector gameOverDetector;
 
     public bool IsHolding()
     {
@@ -27,6 +28,7 @@ public class Hole : MonoBehaviour
                 destroyedPlayer = true;
 
                 Destroy(other);
+                gameOverDetector.GameOver();
                 StartCoroutine(ReturnToTitle());
             }
         }

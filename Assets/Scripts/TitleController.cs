@@ -7,6 +7,6 @@ public class TitleController : MonoBehaviour
 {
     public void OnStartButtonClicked()
     {
-        SceneManager.LoadScene("tutorialScene");
+        SceneManager.LoadScene("DevelopScene");
     }
 }

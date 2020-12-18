@@ -5,23 +5,28 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    // Panel
     [SerializeField] GameObject PlayPanel;
     [SerializeField] GameObject MenuPanel;
     [SerializeField] GameObject GameOverPanel;
+    [SerializeField] GameObject SettingPanel;
+
+    // Button
     [SerializeField] GameObject StartButton;
     [SerializeField] GameObject PauseButton;
-    bool pausing;
 
-    public bool Pausing()
-    {
-        return pausing;
-    }
+    public ButtonColorController buttonColorController;
+    public FollowPlayer followPlayer;
+
+    int CameraChanging = 3;
+
 
     private void Start()
     {
         PlayPanel.SetActive(true);
         MenuPanel.SetActive(false);
         GameOverPanel.SetActive(false);
+        SettingPanel.SetActive(false);
     }
 
     public void OnMenuButtonClicked()
@@ -39,18 +44,70 @@ public class GameController : MonoBehaviour
 
     public void OnPauseButtonClicked()
     {
-        pausing = true;
+        Time.timeScale = 0f;
         PauseButton.SetActive(false);
         StartButton.SetActive(true);
     }
 
     public void OnStartButtonClicked()
     {
-        pausing = false;
+        Time.timeScale = 1f;
         PauseButton.SetActive(true);
         StartButton.SetActive(false);
 
     }
+
+    // ピンチイン・アウト実装によりお払い箱にぽーん
+    /* public void OnExtensionButtonClicked()
+    {
+        if(CameraChanging > 1)
+        {
+            CameraChanging--;
+            if (CameraChanging == 1)
+            {
+                buttonColorController.ButtonHide("ExtensionButton");
+            }
+            else if(CameraChanging == 5)
+            {
+                buttonColorController.ButtonAppear("ReductionButton");
+            }
+            // followPlayer.CameraInOut(followPlayer.CameraChanging);
+            followPlayer.CameraIn(CameraChanging);
+        }
+    }
+
+    public void OnReductionButtonClicked()
+    {
+        if (CameraChanging < 6)
+        {
+            CameraChanging++;
+            if(CameraChanging == 2)
+            {
+                buttonColorController.ButtonAppear("ExtensionButton");
+            }
+            else if (CameraChanging == 6)
+            {
+                buttonColorController.ButtonHide("ReductionButton");
+            }
+            // followPlayer.CameraInOut(followPlayer.CameraChanging);
+            followPlayer.CameraOut(CameraChanging);
+        }
+    } */
+
+    public void OnSettingButtonClicked()
+    {
+        Time.timeScale = 0f;
+        SettingPanel.SetActive(true);
+        MenuPanel.SetActive(false);
+    }
+
+    public void OnReMenuBottonClicked()
+    {
+        Time.timeScale = 1f;
+        SettingPanel.SetActive(false);
+        MenuPanel.SetActive(true);
+    }
+
     public void SelectGameOverDescription()
     {
         GameOverPanel.SetActive(true);

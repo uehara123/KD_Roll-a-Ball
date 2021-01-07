@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1.0f;
+
         PlayPanel.SetActive(true);
         MenuPanel.SetActive(false);
         GameOverPanel.SetActive(false);
@@ -148,5 +149,11 @@ public class GameController : MonoBehaviour
     public void ReturnTittle()
     {
         SceneManager.LoadScene("Title");
+    }
+
+    public void ReturnStart()
+    {
+        Scene loadScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(loadScene.name);
     }
 }

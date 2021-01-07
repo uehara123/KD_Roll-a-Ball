@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject MenuPanel;
     [SerializeField] GameObject GameOverPanel;
     [SerializeField] GameObject SettingPanel;
+    [SerializeField] GameObject SerchPanel;
 
     // Button
     [SerializeField] GameObject StartButton;
@@ -17,6 +18,7 @@ public class GameController : MonoBehaviour
 
     public ButtonColorController buttonColorController;
     public FollowPlayer followPlayer;
+    public CameraController cameraController;
 
     int CameraChanging = 3;
 
@@ -27,6 +29,7 @@ public class GameController : MonoBehaviour
         MenuPanel.SetActive(false);
         GameOverPanel.SetActive(false);
         SettingPanel.SetActive(false);
+        SerchPanel.SetActive(false);
     }
 
     public void OnMenuButtonClicked()
@@ -57,8 +60,24 @@ public class GameController : MonoBehaviour
 
     }
 
+    public void OnSerchButtonClicked()
+    {
+        Time.timeScale = 0f;
+        SerchPanel.SetActive(true);
+        MenuPanel.SetActive(false);
+        cameraController.SetMapCamera();
+    }
+
+    public void OnNotSerchButtonClicked()
+    {
+        Time.timeScale = 1f;
+        SerchPanel.SetActive(false);
+        MenuPanel.SetActive(true);
+        cameraController.SetPlayerCamera();
+    }
+
     // ピンチイン・アウト実装によりお払い箱にぽーん
-    /* public void OnExtensionButtonClicked()
+   　/* public void OnExtensionButtonClicked()
     {
         if(CameraChanging > 1)
         {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PinchInOut2 : MonoBehaviour
+public class MainCamera : MonoBehaviour
 {
 
     float heightMin = 5.0f;

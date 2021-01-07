@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -9,6 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject PlayPanel;
     [SerializeField] GameObject MenuPanel;
     [SerializeField] GameObject GameOverPanel;
+    [SerializeField] GameObject GameClearPanel;
     [SerializeField] GameObject SettingPanel;
     [SerializeField] GameObject SerchPanel;
 
@@ -25,9 +27,11 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1.0f;
         PlayPanel.SetActive(true);
         MenuPanel.SetActive(false);
         GameOverPanel.SetActive(false);
+        GameClearPanel.SetActive(false);
         SettingPanel.SetActive(false);
         SerchPanel.SetActive(false);
     }
@@ -132,5 +136,17 @@ public class GameController : MonoBehaviour
         GameOverPanel.SetActive(true);
         PlayPanel.SetActive(false);
         MenuPanel.SetActive(false);
+    }
+
+    public void SelectGameClearDescription()
+    {
+        GameClearPanel.SetActive(true);
+        PlayPanel.SetActive(false);
+        MenuPanel.SetActive(false);
+    }
+
+    public void ReturnTittle()
+    {
+        SceneManager.LoadScene("Title");
     }
 }

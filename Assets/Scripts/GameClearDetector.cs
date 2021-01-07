@@ -1,12 +1,18 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameClearDetector : MonoBehaviour
 {
+    public GameController gameController;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            Debug.Log("ごーるしました!");
+            Time.timeScale = 0f;
+            gameController.SelectGameClearDescription();
+
         }
     }
 }

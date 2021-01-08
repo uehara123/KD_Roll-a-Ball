@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject GameClearPanel;
     [SerializeField] GameObject SettingPanel;
     [SerializeField] GameObject SerchPanel;
+    [SerializeField] GameObject TimerPanel;
 
     // Button
     [SerializeField] GameObject StartButton;
@@ -21,6 +22,7 @@ public class GameController : MonoBehaviour
     public ButtonColorController buttonColorController;
     public FollowPlayer followPlayer;
     public CameraController cameraController;
+    public TimeController timeController;
 
     int CameraChanging = 3;
 
@@ -137,6 +139,8 @@ public class GameController : MonoBehaviour
         GameOverPanel.SetActive(true);
         PlayPanel.SetActive(false);
         MenuPanel.SetActive(false);
+
+        timeController.timerflag = false;
     }
 
     public void SelectGameClearDescription()

@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1.0f;
 
         PlayPanel.SetActive(true);
+        TimerPanel.SetActive(true);
         MenuPanel.SetActive(false);
         GameOverPanel.SetActive(false);
         GameClearPanel.SetActive(false);
@@ -146,6 +147,7 @@ public class GameController : MonoBehaviour
     public void SelectGameClearDescription()
     {
         GameClearPanel.SetActive(true);
+        TimerPanel.SetActive(false);
         PlayPanel.SetActive(false);
         MenuPanel.SetActive(false);
     }

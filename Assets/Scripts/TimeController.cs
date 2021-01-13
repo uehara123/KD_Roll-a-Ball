@@ -27,7 +27,8 @@ public class TimeController : MonoBehaviour
         time = 0f;
 
         fastestTime = PlayerPrefs.GetFloat(key, 9999f);
-        fastestTimeText.text = "ベストタイム : " + fastestTime.ToString("F1") + "秒";
+        // ベストタイムのリセット
+        // PlayerPrefs.DeleteAll();
     }
 
     // Update is called once per frame
@@ -43,7 +44,6 @@ public class TimeController : MonoBehaviour
                 {
                     fastestTime = time;
                     PlayerPrefs.SetFloat(key, fastestTime);
-                    fastestTimeText.text = "ベストタイム : " + fastestTime.ToString("F1") + "秒";
                 }
             }
         }

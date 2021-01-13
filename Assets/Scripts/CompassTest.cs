@@ -26,7 +26,7 @@ public class CompassTest : MonoBehaviour
     void Update()
     {
         q = player.rotation * offset;
-        q.z = q.y;
+        q.z = -q.y;
         q.y = 0f;
 
         text.text = q + "";

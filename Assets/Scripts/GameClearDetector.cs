@@ -1,16 +1,33 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameClearDetector : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    public GameController gameController;
+    public TimeController timeController;
 
+    bool gameClearFlag;
+
+    public bool GameClear()
+    {
+        return gameClearFlag;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
+        gameClearFlag = false;
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            gameClearFlag = true;
+            Time.timeScale = 0f;
+            gameController.SelectGameClearDescription();
+            timeController.TimeShow();
+        }
     }
 }

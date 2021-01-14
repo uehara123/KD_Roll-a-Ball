@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 1.0f;
     private Rigidbody rb;
     public Hole hole;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
         if (hole.DestroyedPlayer())
         {
-            rb.velocity = new Vector3(0, -9.81f, 0);
+            rb.velocity = new Vector3(0, -5.0f, 0);
         }
 
         if (vector.sqrMagnitude > 1)

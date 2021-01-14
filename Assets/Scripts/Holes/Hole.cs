@@ -4,11 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class Hole : MonoBehaviour
 {
-    bool isHolding, destroyedPlayer = false;
+    bool isHolding, destroyedPlayer;
     int counter;
     public FallArea fallArea;
-
-
+    public GameOverDetector gameOverDetector;
 
     public bool IsHolding()
     {
@@ -29,7 +28,8 @@ public class Hole : MonoBehaviour
                 destroyedPlayer = true;
 
                 Destroy(other);
-                StartCoroutine(ResetPosition());
+                gameOverDetector.GameOver();
+                // StartCoroutine(ReturnToTitle());
             }
         }
     }
@@ -41,7 +41,7 @@ public class Hole : MonoBehaviour
         }
     }
 
-    IEnumerator ResetPosition()
+    /* IEnumerator ReturnToTitle()
     {
         counter = 1;
         while (counter > 0)
@@ -49,7 +49,6 @@ public class Hole : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             counter--;
         }
-        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(sceneIndex);
-    }
+        SceneManager.LoadScene("Title");
+    } */
 }

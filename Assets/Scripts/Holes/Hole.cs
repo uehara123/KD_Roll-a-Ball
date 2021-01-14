@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class Hole : MonoBehaviour
 {
-    bool isHolding, destroyedPlayer;
+    bool isHolding;
+    public bool destroyedPlayer;
     int counter;
     public FallArea fallArea;
     public GameOverDetector gameOverDetector;

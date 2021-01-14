@@ -140,6 +140,7 @@ public class GameController : MonoBehaviour
         GameOverPanel.SetActive(true);
         PlayPanel.SetActive(false);
         MenuPanel.SetActive(false);
+        TimerPanel.SetActive(false);
 
         timeController.timerflag = false;
     }

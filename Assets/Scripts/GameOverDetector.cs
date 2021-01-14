@@ -7,9 +7,9 @@ public class GameOverDetector : MonoBehaviour
 
     public void GameOver()
     {
-        if (hole.IsHolding())
-        {
+        //if (hole.IsHolding())
+        //{
             gameController.SelectGameOverDescription();
-        }
+        //}
     }
 }

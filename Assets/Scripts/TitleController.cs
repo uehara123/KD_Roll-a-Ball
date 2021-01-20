@@ -7,17 +7,20 @@ public class TitleController : MonoBehaviour
 {
     [SerializeField] GameObject TitlePanel;
     [SerializeField] GameObject CourseSelectPanel;
+    [SerializeField] GameObject StageSelectPanel;
 
     private void Start()
     {
         TitlePanel.SetActive(true);
         CourseSelectPanel.SetActive(false);
+        StageSelectPanel.SetActive(false);
     }
 
     public void OnCourseSelectButtonClicked()
     {
         TitlePanel.SetActive(false);
         CourseSelectPanel.SetActive(true);
+        StageSelectPanel.SetActive(false);
     }
 
     public void OnStage1StartButtonClicked()
@@ -39,5 +42,6 @@ public class TitleController : MonoBehaviour
     {
         TitlePanel.SetActive(true);
         CourseSelectPanel.SetActive(false);
+        StageSelectPanel.SetActive(false);
     }
 }

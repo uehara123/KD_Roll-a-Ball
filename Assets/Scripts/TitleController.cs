@@ -23,6 +23,13 @@ public class TitleController : MonoBehaviour
         StageSelectPanel.SetActive(false);
     }
 
+    public void OnStartButtonClicked()
+    {
+        TitlePanel.SetActive(false);
+        CourseSelectPanel.SetActive(false);
+        StageSelectPanel.SetActive(true);
+    }
+
     public void OnStage1StartButtonClicked()
     {
         SceneManager.LoadScene("Stage1");

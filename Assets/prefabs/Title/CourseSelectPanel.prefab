@@ -743,7 +743,7 @@ GameObject:
   - component: {fileID: 3800823287410767233}
   - component: {fileID: 3800823287410767232}
   m_Layer: 5
-  m_Name: Stage1Panel
+  m_Name: StartPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
